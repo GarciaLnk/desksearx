@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXListView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.mfxresources.fonts.MFXFontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:id="rootPane" prefWidth="640" prefHeight="720"
+            styleClass="rootPane" stylesheets="@global.css"
+            fx:controller="com.garcialnk.desksearx.SearchController">
+    <HBox fx:id="windowHeader" alignment="CENTER_RIGHT" layoutY="6.0" prefHeight="50.0"
+          spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets left="20.0" right="10.0"/>
+        </padding>
+        <Label text="DeskSearx" styleClass="windowTitle"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <MFXFontIcon fx:id="settingsIcon" description="fas-gear" size="16.0" styleClass="settings-icon"/>
+        <Region minWidth="8"/>
+        <MFXFontIcon fx:id="minimizeIcon" description="fas-circle-minus" size="16.0" styleClass="minimize-icon"/>
+        <MFXFontIcon fx:id="closeIcon" description="fas-circle-xmark" size="16.0" styleClass="close-icon"/>
+    </HBox>
+    <VBox styleClass="contentBox" layoutY="52.0" alignment="CENTER" spacing="20.0"
+          AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+          AnchorPane.topAnchor="64.0">
+
+        <MFXTextField fx:id="searchField" maxWidth="Infinity" floatMode="BORDER" floatingText="Search Query"
+                      onAction="#onSearchFieldEnter"/>
+        <MFXButton fx:id="searchButton" buttonType="RAISED" minHeight="40.0" maxWidth="Infinity" text="Search"
+                   onAction="#onSearchButtonClick"/>
+        <MFXListView fx:id="resultList" maxWidth="Infinity" VBox.vgrow="ALWAYS" maxHeight="Infinity"/>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,75 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'org.beryx.jlink' version '3.0.1'
+}
+
+group 'com.garcialnk'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.1'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    mainModule = 'com.garcialnk.desksearx'
+    mainClass = 'com.garcialnk.desksearx.SearchApplication'
+}
+
+javafx {
+    version = '21'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    implementation('io.github.palexdev:materialfx:11.17.0')
+    implementation('fr.brouillard.oss:cssfx:11.5.1')
+
+    implementation('org.apache.tika:tika-core:2.9.1')
+    implementation('org.apache.tika:tika-parsers:2.9.1')
+
+    implementation('org.apache.lucene:lucene-core:9.8.0')
+    implementation('org.apache.lucene:lucene-queryparser:9.8.0')
+    implementation('org.apache.lucene:lucene-analysis-common:9.8.0')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jlink {
+    imageZip = project.file("${projectDir}/build/distributions/desksearx-${javafx.platform.classifier}.zip")
+    options = ['--strip-debug', '--no-header-files', '--no-man-pages']
+    addExtraDependencies("javafx")
+
+    launcher {
+        name = 'desksearx'
+        noConsole = true
+    }
+
+    jpackage {
+        resourceDir = project.file("${projectDir}/src/main/resources/com/garcialnk/desksearx/package")
+    }
+}
+
+jlinkZip {
+    group = 'distribution'
+}
