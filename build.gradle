@@ -29,6 +29,7 @@ tasks.withType(JavaCompile).configureEach {
 application {
     mainModule = 'com.garcialnk.desksearx'
     mainClass = 'com.garcialnk.desksearx.SearchApplication'
+    applicationName = 'desksearx'
 }
 
 javafx {
@@ -67,6 +68,15 @@ jlink {
 
     jpackage {
         resourceDir = project.file("${projectDir}/src/main/resources/com/garcialnk/desksearx/package")
+        vendor = 'Alberto García'
+
+        def currentOs = org.gradle.internal.os.OperatingSystem.current()
+
+        if (currentOs.windows) {
+            installerOptions += ['--win-per-user-install', '--win-dir-chooser', '--win-menu', '--win-shortcut']
+        } else if (currentOs.linux) {
+            installerOptions += ['--linux-shortcut']
+        }
     }
 }
 
