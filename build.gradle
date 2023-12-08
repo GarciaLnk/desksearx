@@ -58,7 +58,7 @@ test {
 
 jlink {
     imageZip = project.file("${projectDir}/build/distributions/desksearx-${javafx.platform.classifier}.zip")
-    options = ['--strip-debug', '--no-header-files', '--no-man-pages']
+    options = ['--strip-debug', '--no-header-files', '--no-man-pages', '--strip-native-commands']
     addExtraDependencies("javafx")
 
     launcher {
