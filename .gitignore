@@ -96,3 +96,8 @@ crashlytics-build.properties
 fabric.properties
 .idea/httpRequests
 .idea/caches/build_file_checksums.ser
+
+### AppImage ###
+*.AppImage
+AppDir/
+appimage-build

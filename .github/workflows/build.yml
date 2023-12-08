@@ -1,0 +1,55 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        java: [ '21' ]
+        distribution: [ 'temurin' ]
+      fail-fast: false
+    name: ${{ matrix.os }}
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: ${{ matrix.java }}
+      - name: Echo JAVA_HOME
+        run: echo $JAVA_HOME
+      - name: Verify Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Execute build
+        run: ./gradlew --info --stacktrace build
+      - name: Execute jlink
+        run: ./gradlew --info --stacktrace jlink
+      - name: Execute jpackage
+        run: ./gradlew --info --stacktrace jpackage
+      - name: Build AppImage
+        if: matrix.os == 'ubuntu-latest'
+        uses: AppImageCrafters/build-appimage@master
+        with:
+          recipe: AppImageBuilder.yml
+      - name: Build .exe
+        if: matrix.os == 'windows-latest'
+        run: ./gradlew --info --stacktrace createExe
+      - name: Upload portable image zip as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: desksearx-${{ matrix.os }}-portable
+          path: build/app-image/desksearx
+      - name: Upload AppImage as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: desksearx-linux-appimage
+          path: ./*.AppImage
+      - name: Upload .exe as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: desksearx-windows-exe
+          path: build/launch4j/*.exe

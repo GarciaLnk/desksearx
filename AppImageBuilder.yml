@@ -1,0 +1,35 @@
+# appimage-builder recipe see https://appimage-builder.readthedocs.io for details
+version: 1
+script:
+  - rm -rf AppDir
+  - cp -r build/app-image AppDir
+  - mv AppDir/desksearx AppDir/usr
+  - mkdir -p AppDir/usr/share/applications
+  - cp src/main/resources/package/desksearx.desktop AppDir/usr/share/applications/desksearx.desktop
+  - mkdir -p AppDir/usr/share/icons/hicolor/256x256
+  - cp src/main/resources/package/desksearx.png AppDir/usr/share/icons/hicolor/256x256/desksearx.png
+  - which mksquashfs || apt install squashfs-tools
+AppDir:
+  app_info:
+    id: com.garcialnk.desksearx
+    name: DeskSearx
+    icon: desksearx
+    version: 1.0.0
+    exec: usr/bin/desksearx
+    exec_args: $@
+  files:
+    include:
+      - /usr/lib64/ld-linux-x86-64.so.2
+      - /usr/lib64/libc.so.6
+      - /usr/lib64/libdl.so.2
+      - /usr/lib64/libm.so.6
+      - /usr/lib64/libpthread.so.0
+      - /usr/lib64/librt.so.1
+    exclude:
+      - usr/share/man
+      - usr/share/doc/*/README.*
+      - usr/share/doc/*/changelog.*
+      - usr/share/doc/*/NEWS.*
+      - usr/share/doc/*/TODO.*
+AppImage:
+  arch: x86_64
