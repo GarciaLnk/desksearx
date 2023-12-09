@@ -4,8 +4,6 @@ plugins {
     id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.1.0'
     id 'org.beryx.jlink' version '3.0.1'
-    id 'edu.sc.seis.launch4j' version '3.0.5'
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group 'com.garcialnk'
@@ -60,7 +58,7 @@ test {
 
 jlink {
     imageZip = project.file("${projectDir}/build/distributions/desksearx-${javafx.platform.classifier}.zip")
-    options = ['--strip-debug', '--no-header-files', '--no-man-pages', '--strip-native-commands']
+    options = ['--strip-debug', '--compress', '0', '--no-header-files', '--no-man-pages', '--strip-native-commands']
     addExtraDependencies("javafx")
 
     launcher {
@@ -79,13 +77,4 @@ jlink {
 
 jlinkZip {
     group = 'distribution'
-}
-
-launch4j {
-    mainClassName = 'com.garcialnk.desksearx.Start'
-    icon = "${projectDir}/src/main/resources/package/desksearx.ico"
-    jarTask = project.tasks.shadowJar
-    bundledJrePath = "${projectDir}/build/image"
-    outfile = "DeskSearx-${project.version}-x86_64.exe"
-    requires64Bit = true
 }

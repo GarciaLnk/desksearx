@@ -35,9 +35,24 @@ jobs:
         uses: AppImageCrafters/build-appimage@master
         with:
           recipe: AppImageBuilder.yml
-      - name: Build .exe
+      - name: Build portable .exe
         if: matrix.os == 'windows-latest'
-        run: ./gradlew --info --stacktrace createExe
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          install: mingw-w64-ucrt-x86_64-7zip
+        shell: msys2 {0}
+        run: |
+          cd build/app-image/desksearx || exit
+          7z a -m0=lzma2 -mx=0 -md=256m -mfb=8 -ms=off ../../tmp.7z || exit
+          {
+            cat "7zS.sfx" &&
+            echo ';!@Install@!UTF-8!' &&
+            echo 'RunProgram="desksearx.exe"' &&
+            echo 'GUIMode="2"' &&
+            echo ';!@InstallEnd@!' &&
+            cat "build/tmp.7z"
+          } > "build/DeskSearx-1.0.0-x86_64.exe" || exit
       - name: Upload portable image zip as an artifact
         uses: actions/upload-artifact@v3
         with:
@@ -52,4 +67,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: desksearx-windows-exe
-          path: build/launch4j/*.exe
+          path: build/*.exe
