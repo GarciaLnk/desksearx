@@ -45,8 +45,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         shell: msys2 {0}
         run: |
-          cd build/app-image/desksearx || exit
-          7z a -m0=lzma2 -mx=0 -md=256m -mfb=8 -ms=off ../../tmp.7z || exit
+          (cd build/app-image/desksearx && 7z a -m0=lzma2 -mx=0 -md=256m -mfb=8 -ms=off ../../tmp.7z) || exit
           {
             cat "7zS.sfx" &&
             echo ';!@Install@!UTF-8!' &&
