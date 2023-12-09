@@ -6,8 +6,8 @@ script:
   - mv AppDir/desksearx AppDir/usr
   - mkdir -p AppDir/usr/share/applications
   - cp src/main/resources/package/desksearx.desktop AppDir/usr/share/applications/desksearx.desktop
-  - mkdir -p AppDir/usr/share/icons/hicolor/256x256
-  - cp src/main/resources/package/desksearx.png AppDir/usr/share/icons/hicolor/256x256/desksearx.png
+  - mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+  - cp src/main/resources/package/desksearx.png AppDir/usr/share/icons/hicolor/256x256/apps/desksearx.png
   - which mksquashfs || apt install squashfs-tools
 AppDir:
   app_info:
@@ -26,6 +26,7 @@ AppDir:
       - /usr/lib64/libpthread.so.0
       - /usr/lib64/librt.so.1
     exclude:
+      - usr/lib/runtime/legal
       - usr/share/man
       - usr/share/doc/*/README.*
       - usr/share/doc/*/changelog.*
