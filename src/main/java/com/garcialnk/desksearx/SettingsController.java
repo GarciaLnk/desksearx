@@ -8,7 +8,6 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.cell.MFXListCell;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
 import io.github.palexdev.mfxresources.fonts.MFXFontIcon;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -28,7 +27,7 @@ import static io.github.palexdev.materialfx.validation.Validated.INVALID_PSEUDO_
 
 public class SettingsController {
     private static final String DEFAULT_PATH = System.getProperty("user.home");
-    private static final String[] DEFAULT_DIRECTORIES = {DEFAULT_PATH};
+    private static final String[] DEFAULT_DIRECTORIES = { DEFAULT_PATH };
     private final Stage stage;
 
     @FXML
@@ -59,7 +58,8 @@ public class SettingsController {
         closeIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> stage.close());
         directoryIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> handleDirectoryPickerAction(directoryField));
         directoryField.delegateFocusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (Boolean.TRUE.equals(oldValue && !newValue)) directoryValidation();
+            if (Boolean.TRUE.equals(oldValue && !newValue))
+                directoryValidation();
         });
 
         directoryList.setCellFactory(directory -> new DirectoryCellFactory(directoryList, directory));
@@ -75,15 +75,16 @@ public class SettingsController {
         List<String> messages = new ArrayList<>();
 
         boolean isDirectory = new File(normalizedPath).isDirectory();
-        if (!isDirectory) messages.add("Directory does not exist");
+        if (!isDirectory)
+            messages.add("Directory does not exist");
 
         boolean isNotAdded = !directoryList.getItems().contains(normalizedPath);
-        if (!isNotAdded) messages.add("Directory already added");
-
+        if (!isNotAdded)
+            messages.add("Directory already added");
 
         if (!isDirectory || !isNotAdded) {
             directoryField.pseudoClassStateChanged(INVALID_PSEUDO_CLASS, true);
-            validationLabel.setText(messages.get(0));
+            validationLabel.setText(messages.getFirst());
             validationLabel.setVisible(true);
             validationLabel.setManaged(true);
             addButton.setDisable(true);
@@ -119,7 +120,8 @@ public class SettingsController {
     }
 
     @FXML
-    private void onSaveSettings(ActionEvent actionEvent) {
+    private void onSaveSettings() {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @FXML
@@ -185,7 +187,7 @@ public class SettingsController {
         protected void render(String data) {
             super.render(data);
             if (container != null) {
-                getChildren().add(0, folderIcon);
+                getChildren().addFirst(folderIcon);
                 getChildren().add(container);
                 HBox.setHgrow(container, Priority.ALWAYS);
             }

@@ -8,8 +8,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        java: [ '21' ]
-        distribution: [ 'temurin' ]
+        java: ["21"]
+        distribution: ["temurin"]
       fail-fast: false
     name: ${{ matrix.os }}
     steps:

@@ -9,10 +9,6 @@ public class MoveWindow {
     private double xOffset;
     private double yOffset;
 
-    private MoveWindow() {
-        throw new IllegalStateException("Utility class");
-    }
-
     public MoveWindow(Stage stage, HBox windowHeader) {
         this.stage = stage;
         this.windowHeader = windowHeader;

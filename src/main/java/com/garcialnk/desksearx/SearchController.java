@@ -50,7 +50,8 @@ public class SearchController {
     @FXML
     private void initialize() {
         closeIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> Platform.exit());
-        minimizeIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> ((Stage) rootPane.getScene().getWindow()).setIconified(true));
+        minimizeIcon.addEventHandler(MouseEvent.MOUSE_CLICKED,
+                event -> ((Stage) rootPane.getScene().getWindow()).setIconified(true));
         settingsIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> openSettingsWindow());
 
         new MoveWindow(stage, windowHeader).moveWindow();
@@ -88,7 +89,9 @@ public class SearchController {
             settingsStage.setTitle("Settings");
             settingsStage.minHeightProperty().set(400);
             settingsStage.minWidthProperty().set(600);
-            settingsStage.getIcons().add(new Image(Objects.requireNonNull(SearchApplication.class.getResourceAsStream("logo.png")), 64, 64, true, true));
+            settingsStage.getIcons()
+                    .add(new Image(Objects.requireNonNull(SearchApplication.class.getResourceAsStream("logo.png")), 64,
+                            64, true, true));
             settingsStage.setScene(scene);
             settingsStage.showAndWait();
         } catch (IOException ignored) {

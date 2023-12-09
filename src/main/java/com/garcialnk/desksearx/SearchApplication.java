@@ -41,7 +41,8 @@ public class SearchApplication extends Application {
         stage.setTitle("DeskSearx");
         stage.minHeightProperty().set(400);
         stage.minWidthProperty().set(600);
-        stage.getIcons().add(new Image(Objects.requireNonNull(SearchApplication.class.getResourceAsStream("logo.png")), 64, 64, true, true));
+        stage.getIcons().add(new Image(Objects.requireNonNull(SearchApplication.class.getResourceAsStream("logo.png")),
+                64, 64, true, true));
         stage.setScene(scene);
         stage.show();
     }

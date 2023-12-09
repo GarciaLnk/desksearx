@@ -6,50 +6,55 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
-            styleClass="rootPane" stylesheets="@global.css"
-            fx:controller="com.garcialnk.desksearx.SettingsController">
+    styleClass="rootPane" stylesheets="@global.css"
+    fx:controller="com.garcialnk.desksearx.SettingsController">
     <HBox fx:id="windowHeader" alignment="CENTER_RIGHT" layoutY="6.0" prefHeight="50.0"
-          spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+        AnchorPane.topAnchor="0.0">
         <padding>
-            <Insets left="20.0" right="10.0"/>
+            <Insets left="20.0" right="10.0" />
         </padding>
-        <Label text="Settings" styleClass="windowTitle"/>
-        <Region HBox.hgrow="ALWAYS"/>
-        <MFXFontIcon fx:id="closeIcon" description="fas-circle-xmark" size="16.0" styleClass="close-icon"/>
+        <Label text="Settings" styleClass="windowTitle" />
+        <Region HBox.hgrow="ALWAYS" />
+        <MFXFontIcon fx:id="closeIcon" description="fas-circle-xmark" size="16.0"
+            styleClass="close-icon" />
     </HBox>
 
     <VBox styleClass="contentBox" layoutY="52.0" alignment="TOP_CENTER" spacing="20.0"
-          AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
-          AnchorPane.topAnchor="64.0">
+        AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+        AnchorPane.topAnchor="64.0">
         <VBox spacing="10.0" maxWidth="Infinity">
-            <Label text="Indexing Options" styleClass="sectionTitle"/>
-            <MFXCheckbox fx:id="indexContentsCheck" text="Index file contents" selected="true"/>
-            <MFXCheckbox fx:id="indexHiddenCheck" text="Index hidden files"/>
+            <Label text="Indexing Options" styleClass="sectionTitle" />
+            <MFXCheckbox fx:id="indexContentsCheck" text="Index file contents" selected="true" />
+            <MFXCheckbox fx:id="indexHiddenCheck" text="Index hidden files" />
         </VBox>
         <VBox spacing="10.0" maxWidth="Infinity">
-            <Label text="Directory Configuration" styleClass="sectionTitle"/>
+            <Label text="Directory Configuration" styleClass="sectionTitle" />
             <VBox spacing="5.0" maxWidth="Infinity" HBox.hgrow="ALWAYS">
                 <padding>
-                    <Insets right="10.0"/>
+                    <Insets right="10.0" />
                 </padding>
                 <HBox alignment="CENTER" spacing="10.0" maxWidth="Infinity">
-                    <MFXTextField fx:id="directoryField" maxWidth="Infinity" HBox.hgrow="ALWAYS" floatMode="BORDER"
-                                  floatingText="Directory Path" onAction="#onDirectoryFieldEnter"/>
+                    <MFXTextField fx:id="directoryField" maxWidth="Infinity" HBox.hgrow="ALWAYS"
+                        floatMode="BORDER"
+                        floatingText="Directory Path" onAction="#onDirectoryFieldEnter" />
                     <MFXFontIcon fx:id="directoryIcon" description="fas-folder-open" size="16.0"
-                                 styleClass="directoryIcon"/>
-                    <MFXButton fx:id="addButton" text="Add" onAction="#onAddDirectory" styleClass="greenButton"/>
-                    <MFXButton text="Delete" onAction="#onDeleteDirectory" styleClass="redButton"/>
+                        styleClass="directoryIcon" />
+                    <MFXButton fx:id="addButton" text="Add" onAction="#onAddDirectory"
+                        styleClass="greenButton" />
+                    <MFXButton text="Delete" onAction="#onDeleteDirectory" styleClass="redButton" />
                 </HBox>
-                <Label id="validationLabel" fx:id="validationLabel" maxWidth="Infinity" minHeight="-Infinity"
-                       textFill="#ef6e6b" visible="false" managed="false" wrapText="true"/>
+                <Label id="validationLabel" fx:id="validationLabel" maxWidth="Infinity"
+                    minHeight="-Infinity"
+                    textFill="#ef6e6b" visible="false" managed="false" wrapText="true" />
             </VBox>
-            <MFXListView fx:id="directoryList" maxWidth="Infinity" maxHeight="200"/>
+            <MFXListView fx:id="directoryList" maxWidth="Infinity" maxHeight="200" />
         </VBox>
         <HBox spacing="16.0">
-            <MFXButton text="Defaults" onAction="#onDefaultSettings"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <MFXButton text="Cancel" onAction="#onCancelSettings"/>
-            <MFXButton text="Save" onAction="#onSaveSettings"/>
+            <MFXButton text="Defaults" onAction="#onDefaultSettings" />
+            <Region HBox.hgrow="ALWAYS" />
+            <MFXButton text="Cancel" onAction="#onCancelSettings" />
+            <MFXButton text="Save" onAction="#onSaveSettings" />
         </HBox>
     </VBox>
 </AnchorPane>
