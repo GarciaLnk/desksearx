@@ -81,6 +81,14 @@ jlinkZip {
 }
 
 graalvmNative {
+    agent {
+        metadataCopy {
+            inputTaskNames.add("run")
+            outputDirectories.add("src/main/resources/META-INF/native-image")
+            mergeWithExisting = true
+        }
+    }
+
     binaries.configureEach {
         resources {
             autodetection {

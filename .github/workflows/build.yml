@@ -56,16 +56,16 @@ jobs:
             echo ';!@InstallEnd@!' &&
             cat "build/tmp.7z"
           } > "build/DeskSearx-1.0.0-x86_64.exe" || exit
-      - name: Upload portable image zip as an artifact
+      - name: Upload image zip as an artifact
         uses: actions/upload-artifact@v3
         with:
-          name: desksearx-${{ matrix.os }}-portable
+          name: desksearx-${{ matrix.os }}
           path: build/app-image/desksearx
-      - name: Upload Linux native binary as an artifact
+      - name: Upload native binary as an artifact
         uses: actions/upload-artifact@v3
         with:
-          name: desksearx-linux-binary
-          path: build/native/nativeCompile/desksearx
+          name: desksearx-${{ matrix.os }}-binary
+          path: build/native/nativeCompile/desksearx*
       - name: Upload AppImage as an artifact
         uses: actions/upload-artifact@v3
         with:

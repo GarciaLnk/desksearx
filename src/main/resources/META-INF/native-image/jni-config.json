@@ -17,6 +17,12 @@
         "parameterTypes": []
       },
       {
+        "name": "notifyThemeChanged",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
         "name": "reportException",
         "parameterTypes": [
           "java.lang.Throwable"
@@ -26,9 +32,46 @@
   },
   {
     "name": "com.sun.glass.ui.Clipboard",
+    "fields": [
+      {
+        "name": "name"
+      }
+    ],
     "methods": [
       {
+        "name": "actionPerformed",
+        "parameterTypes": [
+          "int"
+        ]
+      },
+      {
         "name": "contentChanged",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.glass.ui.CommonDialogs",
+    "methods": [
+      {
+        "name": "createFileChooserResult",
+        "parameterTypes": [
+          "java.lang.String[]",
+          "com.sun.glass.ui.CommonDialogs$ExtensionFilter[]",
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.sun.glass.ui.CommonDialogs$ExtensionFilter",
+    "methods": [
+      {
+        "name": "extensionsToArray",
+        "parameterTypes": []
+      },
+      {
+        "name": "getDescription",
         "parameterTypes": []
       }
     ]
@@ -38,6 +81,16 @@
     "fields": [
       {
         "name": "ptr"
+      }
+    ],
+    "methods": [
+      {
+        "name": "getNativeCursor",
+        "parameterTypes": []
+      },
+      {
+        "name": "getType",
+        "parameterTypes": []
       }
     ]
   },
@@ -107,6 +160,18 @@
     ],
     "methods": [
       {
+        "name": "getAccessible",
+        "parameterTypes": []
+      },
+      {
+        "name": "getHeight",
+        "parameterTypes": []
+      },
+      {
+        "name": "getWidth",
+        "parameterTypes": []
+      },
+      {
         "name": "notifyDragDrop",
         "parameterTypes": [
           "int",
@@ -149,6 +214,12 @@
           "byte[]",
           "int",
           "int",
+          "int"
+        ]
+      },
+      {
+        "name": "notifyInputMethodCandidatePosRequest",
+        "parameterTypes": [
           "int"
         ]
       },
@@ -293,6 +364,15 @@
           "int",
           "int"
         ]
+      },
+      {
+        "name": "notifyScaleChanged",
+        "parameterTypes": [
+          "float",
+          "float",
+          "float",
+          "float"
+        ]
       }
     ]
   },
@@ -364,6 +444,145 @@
     ]
   },
   {
+    "name": "com.sun.glass.ui.win.WinApplication"
+  },
+  {
+    "name": "com.sun.glass.ui.win.WinDnDClipboard",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      },
+      {
+        "name": "setDragButton",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.sun.glass.ui.win.WinGestureSupport",
+    "methods": [
+      {
+        "name": "gesturePerformed",
+        "parameterTypes": [
+          "com.sun.glass.ui.View",
+          "int",
+          "boolean",
+          "boolean",
+          "int",
+          "int",
+          "int",
+          "int",
+          "float",
+          "float",
+          "float",
+          "float",
+          "float",
+          "float",
+          "float"
+        ]
+      },
+      {
+        "name": "inertiaGestureFinished",
+        "parameterTypes": [
+          "com.sun.glass.ui.View"
+        ]
+      },
+      {
+        "name": "notifyBeginTouchEvent",
+        "parameterTypes": [
+          "com.sun.glass.ui.View",
+          "int",
+          "boolean",
+          "int"
+        ]
+      },
+      {
+        "name": "notifyEndTouchEvent",
+        "parameterTypes": [
+          "com.sun.glass.ui.View"
+        ]
+      },
+      {
+        "name": "notifyNextTouchEvent",
+        "parameterTypes": [
+          "com.sun.glass.ui.View",
+          "int",
+          "long",
+          "int",
+          "int",
+          "int",
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.sun.glass.ui.win.WinPixels"
+  },
+  {
+    "name": "com.sun.glass.ui.win.WinSystemClipboard",
+    "fields": [
+      {
+        "name": "ptr"
+      }
+    ],
+    "methods": [
+      {
+        "name": "fosSerialize",
+        "parameterTypes": [
+          "java.lang.String",
+          "long"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.sun.glass.ui.win.WinView",
+    "methods": [
+      {
+        "name": "notifyResize",
+        "parameterTypes": [
+          "int",
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.sun.glass.ui.win.WinWindow",
+    "methods": [
+      {
+        "name": "notifyMoving",
+        "parameterTypes": [
+          "int",
+          "int",
+          "int",
+          "int",
+          "float",
+          "float",
+          "int",
+          "int",
+          "int",
+          "int",
+          "int",
+          "int",
+          "int"
+        ]
+      },
+      {
+        "name": "notifyResize",
+        "parameterTypes": [
+          "int",
+          "int",
+          "int"
+        ]
+      }
+    ]
+  },
+  {
     "name": "com.sun.javafx.font.FontConfigManager$FcCompFont",
     "fields": [
       {
@@ -391,6 +610,240 @@
       },
       {
         "name": "styleStr"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.D2D1_COLOR_F",
+    "fields": [
+      {
+        "name": "a"
+      },
+      {
+        "name": "b"
+      },
+      {
+        "name": "g"
+      },
+      {
+        "name": "r"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.D2D1_MATRIX_3X2_F",
+    "fields": [
+      {
+        "name": "_11"
+      },
+      {
+        "name": "_12"
+      },
+      {
+        "name": "_21"
+      },
+      {
+        "name": "_22"
+      },
+      {
+        "name": "_31"
+      },
+      {
+        "name": "_32"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.D2D1_PIXEL_FORMAT",
+    "fields": [
+      {
+        "name": "alphaMode"
+      },
+      {
+        "name": "format"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.D2D1_POINT_2F",
+    "fields": [
+      {
+        "name": "x"
+      },
+      {
+        "name": "y"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.D2D1_RENDER_TARGET_PROPERTIES",
+    "fields": [
+      {
+        "name": "dpiX"
+      },
+      {
+        "name": "dpiY"
+      },
+      {
+        "name": "minLevel"
+      },
+      {
+        "name": "pixelFormat"
+      },
+      {
+        "name": "type"
+      },
+      {
+        "name": "usage"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.DWRITE_GLYPH_METRICS",
+    "fields": [
+      {
+        "name": "advanceHeight"
+      },
+      {
+        "name": "advanceWidth"
+      },
+      {
+        "name": "bottomSideBearing"
+      },
+      {
+        "name": "leftSideBearing"
+      },
+      {
+        "name": "rightSideBearing"
+      },
+      {
+        "name": "topSideBearing"
+      },
+      {
+        "name": "verticalOriginY"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.DWRITE_GLYPH_RUN",
+    "fields": [
+      {
+        "name": "advanceOffset"
+      },
+      {
+        "name": "ascenderOffset"
+      },
+      {
+        "name": "bidiLevel"
+      },
+      {
+        "name": "fontEmSize"
+      },
+      {
+        "name": "fontFace"
+      },
+      {
+        "name": "glyphAdvances"
+      },
+      {
+        "name": "glyphIndices"
+      },
+      {
+        "name": "isSideways"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.DWRITE_MATRIX",
+    "fields": [
+      {
+        "name": "dx"
+      },
+      {
+        "name": "dy"
+      },
+      {
+        "name": "m11"
+      },
+      {
+        "name": "m12"
+      },
+      {
+        "name": "m21"
+      },
+      {
+        "name": "m22"
+      }
+    ],
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.javafx.font.directwrite.RECT",
+    "fields": [
+      {
+        "name": "bottom"
+      },
+      {
+        "name": "left"
+      },
+      {
+        "name": "right"
+      },
+      {
+        "name": "top"
       }
     ],
     "methods": [
@@ -514,12 +967,42 @@
     ]
   },
   {
+    "name": "com.sun.prism.impl.PrismSettings",
+    "fields": [
+      {
+        "name": "disableD3D9Ex"
+      },
+      {
+        "name": "forceGPU"
+      },
+      {
+        "name": "isVsyncEnabled"
+      },
+      {
+        "name": "verbose"
+      }
+    ]
+  },
+  {
     "name": "java.lang.Boolean",
     "methods": [
       {
         "name": "getBoolean",
         "parameterTypes": [
           "java.lang.String"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "java.lang.Class",
+    "methods": [
+      {
+        "name": "forName",
+        "parameterTypes": [
+          "java.lang.String",
+          "boolean",
+          "java.lang.ClassLoader"
         ]
       }
     ]
