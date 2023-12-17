@@ -1,4 +1,3 @@
-@import "fonts/Fonts.css";
 
 * {
   -mfx-blue: #2196f3;
@@ -91,7 +90,8 @@
 }
 
 .rootPane .windowTitle {
-  -fx-font-family: "Comfortaa Bold";
+  -fx-font-family: "Roboto Bold";
+  -fx-font-weight: bold;
   -fx-font-size: 24px;
   -fx-text-fill: -mfx-text-he;
 }
@@ -109,7 +109,8 @@
 .mfx-button {
   -fx-background-color: -mfx-purple;
   -fx-text-fill: white;
-  -fx-font-family: "Comfortaa SemiBold";
+  -fx-font-family: "Roboto SemiBold";
+  -fx-font-weight: 600;
   -fx-cursor: hand;
 }
 
@@ -138,11 +139,13 @@
  * Text Fields
 **************************************************/
 .mfx-text-field {
-  -fx-font-family: "Comfortaa SemiBold";
+  -fx-font-family: "Roboto SemiBold";
+  -fx-font-weight: 600;
 }
 
 .mfx-text-field .floating-text {
-  -fx-font-family: "Comfortaa SemiBold";
+  -fx-font-family: "Roboto SemiBold";
+  -fx-font-weight: 600;
 }
 
 .directoryIcon {
@@ -167,7 +170,8 @@
 }
 
 #validationLabel {
-  -fx-font-family: "Comfortaa SemiBold";
+  -fx-font-family: "Roboto SemiBold";
+  -fx-font-weight: 600;
   -fx-font-size: 11;
 }
 
@@ -176,11 +180,12 @@
 **************************************************/
 .mfx-list-view .virtual-flow .mfx-list-cell .data-label,
 .mfx-check-list-view .virtual-flow .mfx-check-list-cell .data-label {
-  -fx-font-family: "Open Sans Regular";
+  -fx-font-family: "Roboto Regular";
 }
 
 .mfx-list-view .virtual-flow .mfx-list-cell:selected .data-label {
-  -fx-font-family: "Open Sans SemiBold";
+  -fx-font-family: "Roboto SemiBold";
+  -fx-font-weight: 600;
 }
 
 .mfx-list-view,
@@ -216,7 +221,7 @@
  * Checkboxes
 **************************************************/
 .mfx-checkbox {
-  -fx-font-family: "Comfortaa";
+  -fx-font-family: "Roboto";
   -fx-text-fill: -mfx-text-he;
 }
 
@@ -228,7 +233,8 @@
  * Labels
 **************************************************/
 .sectionTitle {
-  -fx-font-family: "Comfortaa SemiBold";
+  -fx-font-family: "Roboto SemiBold";
+  -fx-font-weight: 600;
   -fx-font-size: 18;
   -fx-text-fill: -mfx-text-he;
 }
