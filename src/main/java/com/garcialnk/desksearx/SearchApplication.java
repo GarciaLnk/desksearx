@@ -17,6 +17,7 @@ import java.util.Objects;
 
 public class SearchApplication extends Application {
     public static void main(String[] args) {
+        System.setProperty("prism.forceGPU", "true"); // https://github.com/gluonhq/substrate/issues/891#issuecomment-802169710
         launch();
     }
 

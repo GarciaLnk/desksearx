@@ -4,6 +4,7 @@ plugins {
     id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.1.0'
     id 'org.beryx.jlink' version '3.0.1'
+    id 'org.graalvm.buildtools.native' version '0.9.28'
 }
 
 group 'com.garcialnk'
@@ -77,4 +78,23 @@ jlink {
 
 jlinkZip {
     group = 'distribution'
+}
+
+graalvmNative {
+    binaries.configureEach {
+        resources {
+            autodetection {
+                enabled.set(true)
+                restrictToProjectDependencies.set(false)
+            }
+        }
+    }
+
+    binaries {
+        named("main") {
+            buildArgs.addAll("-O3", "--strict-image-heap", "--enable-sbom")
+        }
+    }
+
+    toolchainDetection.set(true)
 }

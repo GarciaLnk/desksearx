@@ -1,0 +1,137 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "MaterialFX:\\Qio/github/palexdev/materialfx/css/DefaultTheme.css\\E"
+      },
+      {
+        "pattern": "MaterialFX:\\Qio/github/palexdev/materialfx/css/jfx/modena/assets.zip\\E"
+      },
+      {
+        "pattern": "MaterialFX:\\Qio/github/palexdev/materialfx/css/jfx/modena/modena.css\\E"
+      },
+      {
+        "pattern": "MaterialFX:\\Qio/github/palexdev/materialfx/css/legacy/LegacyControls.css\\E"
+      },
+      {
+        "pattern": "MaterialFX:\\Qio/github/palexdev/materialfx/css/mfx-assets.zip\\E"
+      },
+      {
+        "pattern": "VirtualizedFX:\\Qio/github/palexdev/virtualizedfx/SimpleVirtualFlow.css\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/fonts.mf\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/java.net.spi.URLStreamHandlerProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/java.time.zone.ZoneRulesProvider\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/javax.xml.stream.XMLInputFactory\\E"
+      },
+      {
+        "pattern": "com.garcialnk.desksearx:\\Qcom/garcialnk/desksearx/logo.png\\E"
+      },
+      {
+        "pattern": "com.garcialnk.desksearx:\\Qcom/garcialnk/desksearx/search-view.fxml\\E"
+      },
+      {
+        "pattern": "com.garcialnk.desksearx:\\Qcom/garcialnk/desksearx/settings-view.fxml\\E"
+      },
+      {
+        "pattern": "java.base:\\Qjdk/internal/icu/impl/data/icudt72b/ubidi.icu\\E"
+      },
+      {
+        "pattern": "javafx.base:\\Qcom/sun/javafx/reflect/Trampoline.class\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/glass/utils/NativeLibLoader.class\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/DrawRoundRect_Color.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/FillCircle_Color.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/FillPgram_Color.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/FillRoundRect_Color.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/Mask_TextureSuper.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_Color.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_TextureFirstPassLCD.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_TextureRGB.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_TextureSecondPassLCD.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/prism/es2/glsl/Texture_Color.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/scenario/effect/impl/es2/glsl/Blend_SRC_IN.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qcom/sun/scenario/effect/impl/es2/glsl/LinearConvolveShadow_32.frag\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qlibglass.so\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qlibglassgtk3.so\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qlibjavafx_font.so\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qlibjavafx_font_freetype.so\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qlibjavafx_font_pango.so\\E"
+      },
+      {
+        "pattern": "javafx.graphics:\\Qlibprism_es2.so\\E"
+      },
+      {
+        "pattern": "mfx.resources:\\Qio/github/palexdev/mfxresources/fonts/FontAwesome/solid/FontAwesomeSolid.ttf\\E"
+      },
+      {
+        "pattern": ".*/garcialnk/desksearx/global.css$"
+      }
+    ]
+  },
+  "bundles": [
+    {
+      "name": "com.sun.javafx.tk.quantum.QuantumMessagesBundle",
+      "locales": [
+        "und"
+      ]
+    },
+    {
+      "name": "com/sun/javafx/scene/control/skin/resources/controls",
+      "locales": [
+        "und"
+      ]
+    },
+    {
+      "name": "io.github.palexdev.materialfx.i18n.mfxlang",
+      "locales": [
+        "en"
+      ]
+    }
+  ]
+}

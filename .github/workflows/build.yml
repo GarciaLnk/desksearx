@@ -36,6 +36,8 @@ jobs:
         run: ./gradlew --info --stacktrace jlink
       - name: Execute jpackage
         run: ./gradlew --info --stacktrace jpackage
+      - name: Execute nativeCompile
+        run: ./gradlew --info --stacktrace nativeCompile
       - name: Build AppImage
         if: matrix.os == 'ubuntu-latest'
         uses: AppImageCrafters/build-appimage@master
@@ -59,6 +61,11 @@ jobs:
         with:
           name: desksearx-${{ matrix.os }}-portable
           path: build/app-image/desksearx
+      - name: Upload Linux native binary as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: desksearx-linux-binary
+          path: build/native/nativeCompile/desksearx
       - name: Upload AppImage as an artifact
         uses: actions/upload-artifact@v3
         with:
