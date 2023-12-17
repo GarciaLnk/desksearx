@@ -15,12 +15,11 @@ jobs:
     steps:
       - name: Git checkout
         uses: actions/checkout@v4
-      - name: Setup MSYS2
+      - name: Set up MSVC Dev Prompt
         if: matrix.os == 'windows-latest'
-        uses: msys2/setup-msys2@v2
+        uses: TheMrMilchmann/setup-msvc-dev@v3
         with:
-          msystem: UCRT64
-          install: mingw-w64-ucrt-x86_64-7zip
+          arch: x64
       - name: Set up JDK (GraalVM)
         uses: graalvm/setup-graalvm@v1
         with:
@@ -43,19 +42,12 @@ jobs:
         uses: AppImageCrafters/build-appimage@master
         with:
           recipe: AppImageBuilder.yml
-      - name: Build portable .exe
+      - name: Build .exe
         if: matrix.os == 'windows-latest'
-        shell: msys2 {0}
         run: |
-          (cd build/app-image/desksearx && 7z a -m0=lzma2 -mx=0 -md=256m -mfb=8 -ms=off ../../tmp.7z) || exit
-          {
-            cat "7zS.sfx" &&
-            echo ';!@Install@!UTF-8!' &&
-            echo 'RunProgram="desksearx.exe"' &&
-            echo 'GUIMode="2"' &&
-            echo ';!@InstallEnd@!' &&
-            cat "build/tmp.7z"
-          } > "build/DeskSearx-1.0.0-x86_64.exe" || exit
+          EDITBIN /SUBSYSTEM:WINDOWS build/native/nativeCompile/desksearx.exe
+          choco install rcedit -y || exit
+          rcedit --set-icon src\main\resources\package\desksearx.ico build\native\nativeCompile\desksearx.exe
       - name: Upload image zip as an artifact
         uses: actions/upload-artifact@v3
         with:
