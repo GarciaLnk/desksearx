@@ -9,7 +9,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         java: ["21"]
-        distribution: ["temurin"]
+        distribution: ["graalvm"]
       fail-fast: false
     name: ${{ matrix.os }}
     steps:
@@ -21,8 +21,8 @@ jobs:
         with:
           msystem: UCRT64
           install: mingw-w64-ucrt-x86_64-7zip
-      - name: Set up JDK
-        uses: actions/setup-java@v4
+      - name: Set up JDK (GraalVM)
+        uses: graalvm/setup-graalvm@v1
         with:
           distribution: ${{ matrix.distribution }}
           java-version: ${{ matrix.java }}
