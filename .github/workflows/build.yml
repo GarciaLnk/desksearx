@@ -1,0 +1,74 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04, windows-latest ]
+        java: [ "21" ]
+        distribution: [ "graalvm" ]
+      fail-fast: false
+    name: ${{ matrix.os }}
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+      - name: Setup MSYS2
+        if: matrix.os == 'windows-latest'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          install: mingw-w64-ucrt-x86_64-7zip
+      - name: Set up JDK (GraalVM)
+        uses: graalvm/setup-graalvm@v1
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: ${{ matrix.java }}
+      - name: Echo JAVA_HOME
+        run: echo $JAVA_HOME
+      - name: Verify Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v2
+      - name: Execute build
+        run: ./gradlew --info --stacktrace build
+      - name: Execute jpackage
+        run: ./gradlew --info --stacktrace jpackage
+      - name: Run tests
+        run: ./gradlew --info --stacktrace test
+      - name: Build AppImage
+        if: matrix.os == 'ubuntu-20.04'
+        uses: AppImageCrafters/build-appimage@master
+        with:
+          recipe: .ci/AppImageBuilder.yml
+      - name: Build portable .exe
+        if: matrix.os == 'windows-latest'
+        shell: msys2 {0}
+        run: |
+          (cd build/app-image/desksearx && 7z a -m0=lzma2 -mx=0 -md=256m -mfb=8 -ms=off ../../tmp.7z) || exit
+          {
+            cat ".ci/7zS.sfx" &&
+            echo ';!@Install@!UTF-8!' &&
+            echo 'RunProgram="desksearx.exe"' &&
+            echo 'GUIMode="2"' &&
+            echo ';!@InstallEnd@!' &&
+            cat "build/tmp.7z"
+          } > "DeskSearx-1.0.0-x86_64.exe" || exit
+      - name: Upload image zip as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: desksearx-${{ matrix.os }}
+          path: build/app-image/desksearx
+      - name: Upload .AppImage as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: desksearx-linux-appimage
+          path: ./*.AppImage
+      - name: Upload .exe as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: desksearx-windows-exe
+          path: ./*.exe

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DeskSearx
+Exec=/opt/desksearx/bin/desksearx
+Icon=/opt/desksearx/lib/desksearx.png
+Comment=A powerful desktop search tool
+Categories=Utility;
+Terminal=false

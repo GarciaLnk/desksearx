@@ -1,0 +1,33 @@
+<component name="InspectionProjectProfileManager">
+    <profile version="1.0">
+        <option name="myName" value="Project Default"/>
+        <inspection_tool class="CssInvalidPseudoSelector" enabled="false" level="ERROR"
+                         enabled_by_default="false"/>
+        <inspection_tool class="CssUnknownProperty" enabled="true" level="WARNING"
+                         enabled_by_default="true">
+            <option name="myCustomPropertiesEnabled" value="true"/>
+            <option name="myIgnoreVendorSpecificProperties" value="false"/>
+            <option name="myCustomPropertiesList">
+                <value>
+                    <list size="13">
+                        <item index="0" class="java.lang.String" itemvalue="-mfx-blue"/>
+                        <item index="1" class="java.lang.String" itemvalue="-mfx-charcoal"/>
+                        <item index="2" class="java.lang.String" itemvalue="-mfx-green"/>
+                        <item index="3" class="java.lang.String" itemvalue="-mfx-onyx"/>
+                        <item index="4" class="java.lang.String" itemvalue="-mfx-orange"/>
+                        <item index="5" class="java.lang.String" itemvalue="-mfx-purple"/>
+                        <item index="6" class="java.lang.String" itemvalue="-mfx-red"/>
+                        <item index="7" class="java.lang.String" itemvalue="-mfx-yellow"/>
+                        <item index="8" class="java.lang.String" itemvalue="-mfx-text-he"/>
+                        <item index="9" class="java.lang.String" itemvalue="-mfx-text-me"/>
+                        <item index="10" class="java.lang.String" itemvalue="-mfx-text-disabled"/>
+                        <item index="11" class="java.lang.String" itemvalue="-common-gradient"/>
+                        <item index="12" class="java.lang.String" itemvalue="-secondary-gradient"/>
+                    </list>
+                </value>
+            </option>
+        </inspection_tool>
+        <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true"/>
+        <inspection_tool class="JSHint" enabled="true" level="ERROR" enabled_by_default="true"/>
+    </profile>
+</component>

@@ -1,0 +1,99 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'org.beryx.runtime' version '1.13.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group 'com.garcialnk'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    tikaVersion = '3.0.0-BETA'
+    luceneVersion = '9.9.2'
+    jacksonVersion = '2.16.1'
+    junitVersion = '5.10.2'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    mainClass = 'com.garcialnk.desksearx.Start'
+    applicationName = 'desksearx'
+}
+
+javafx {
+    version = '21.0.2'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    implementation('io.github.palexdev:materialfx:11.17.0')
+    implementation('fr.brouillard.oss:cssfx:11.5.1')
+
+    implementation("org.apache.tika:tika-core:${tikaVersion}")
+    implementation("org.apache.tika:tika-langdetect:${tikaVersion}")
+    implementation("org.apache.tika:tika-langdetect-optimaize:${tikaVersion}")
+    runtimeOnly("org.apache.tika:tika-parsers-standard-package:${tikaVersion}")
+
+    implementation("org.apache.lucene:lucene-core:${luceneVersion}")
+    implementation("org.apache.lucene:lucene-queryparser:${luceneVersion}")
+    implementation("org.apache.lucene:lucene-analysis-common:${luceneVersion}")
+
+    implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
+
+    implementation('org.slf4j:slf4j-api:2.0.12')
+    runtimeOnly('ch.qos.logback:logback-classic:1.4.14')
+    runtimeOnly('org.apache.logging.log4j:log4j-core:2.22.1')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes("Multi-Release": true)
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
+    dependencies {
+        exclude(dependency('ch.qos.logback:logback-classic:.*'))
+        exclude(dependency('org.apache.logging.log4j:log4j-core:.*'))
+    }
+}
+
+runtime {
+    imageZip = project.file("${projectDir}/build/distributions/desksearx-${javafx.platform.classifier}-${version}.zip")
+    options = ['--strip-debug', '--compress', '0', '--no-header-files', '--no-man-pages', '--strip-native-commands']
+    modules = ['java.logging', 'jdk.unsupported', 'java.desktop', 'java.scripting', 'java.naming', 'java.sql']
+
+    launcher {
+        noConsole = true
+    }
+
+    jpackage {
+        resourceDir = project.file("${projectDir}/src/main/resources/package")
+        imageOutputDir = file("${projectDir}/build/app-image")
+        skipInstaller = true
+    }
+}
